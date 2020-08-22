@@ -17,9 +17,23 @@ const client = new Discord.Client();
 
 const prefix = config.get('discord.prefix');
 
+const statuses = config.get('discord.status.list');
+const statusDuration = config.get('discord.status.duration') * 1000;
+let statusCounter = 0;
+
+function setStatus(client) {
+	client.user.setActivity(statuses[statusCounter++]);
+	statusCounter %= statuses.length;
+}
+
 client.once('ready', () => {
 	console.log(`Ready at ${(new Date()).toISOString()}`);
 	console.log(`Logged in as @${client.user.tag} (${client.user.id})`);
+
+	if (statuses) {
+		setStatus(client);
+		client.setInterval(() => setStatus(client), statusDuration);
+	}
 });
 
 client.on('message', async msg => {

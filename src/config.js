@@ -17,6 +17,18 @@ const config = convict({
 			format: String,
 			default: '$$',
 		},
+		status: {
+			duration: {
+				doc: 'Amount of seconds to wait before changing statuses',
+				format: Number,
+				default: 60,
+			},
+			list: {
+				doc: 'List of statuses for the bot to cycle through',
+				format: Array,
+				default: [],
+			},
+		}
 	},
 });
 

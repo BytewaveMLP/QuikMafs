@@ -4,3 +4,11 @@
 authToken = ""
 # Prefix (and optional postfix) to use for Math messages
 prefix = "$$"
+
+[discord.status]
+# Statuses that will be rotated through as the bot's "Playing" activity
+list = [
+  "with LaTeX",
+]
+# How long to keep each status up for, in seconds
+duration = 60
