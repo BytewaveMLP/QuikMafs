@@ -66,10 +66,11 @@ client.on('message', async msg => {
 		console.log(`${logPrefix} Processed successfully!`);
 		await msg.reply(new Discord.MessageAttachment(png, 'output.png'));
 	} catch (errors) {
-		console.error(`${logPrefix} Processing failed!
-\t${errors.join('\n\t')}`);
+		let errorStr = errors;
+		if (Array.isArray(errors)) errorStr = errors.join('\n');
+		console.error(`${logPrefix} Processing failed!`, errors);
 		msg.reply(`There was an error parsing your input:
-${errors.join('\n')}`);
+${errorStr}`);
 	}
 });
 
