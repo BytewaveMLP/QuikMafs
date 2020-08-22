@@ -26,9 +26,12 @@ function setStatus(client) {
 	statusCounter %= statuses.length;
 }
 
-client.once('ready', () => {
+client.once('ready', async () => {
 	console.log(`Ready at ${(new Date()).toISOString()}`);
 	console.log(`Logged in as @${client.user.tag} (${client.user.id})`);
+	const invite = await client.generateInvite(['SEND_MESSAGES', 'ATTACH_FILES']);
+	console.log(`Use this link to invite me to a server:
+\t${invite}`);
 
 	if (statuses) {
 		setStatus(client);
