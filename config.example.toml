@@ -1,0 +1,6 @@
+[discord]
+# Your Disocrd auth token
+# Env: DISCORD_AUTH_TOKEN
+authToken = ""
+# Prefix (and optional postfix) to use for Math messages
+prefix = "$$"

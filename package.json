@@ -1,0 +1,16 @@
+{
+  "name": "quik-mafs",
+  "version": "1.0.0",
+  "description": "A Discord bot which parses and renders LaTeX math",
+  "main": "src/index.js",
+  "repository": "https://github.com/BytewaveMLP/QuikMafs",
+  "author": "Eliot Partridge <byte@code.horse> (https://code.horse)",
+  "license": "MIT",
+  "dependencies": {
+    "convict": "^6.0.0",
+    "discord.js": "^12.3.1",
+    "mathjax-node": "^2.1.1",
+    "sharp": "^0.25.4",
+    "toml": "^3.0.0"
+  }
+}
