@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const escapeStrRegexp = require('escape-string-regexp');
 
 const Discord = require('discord.js');
 const MathJax = require('mathjax-node');
@@ -16,6 +17,9 @@ const config = require('./config');
 const client = new Discord.Client();
 
 const prefix = config.get('discord.prefix');
+const postfix = config.has('discord.postfix') ? config.get('discord.postfix') : config.get('discord.prefix');
+
+const texPattern = new RegExp(`^${escapeStrRegexp(prefix)}((.|\n)+?)(${escapeStrRegexp(postfix)})?$`, 'm');
 
 const statuses = config.get('discord.status.list');
 const statusDuration = config.get('discord.status.duration') * 1000;
@@ -41,11 +45,11 @@ client.once('ready', async () => {
 
 client.on('message', async msg => {
 	const logPrefix = `${msg.channel.id}:${msg.id} -`;
-	if (!msg.content.startsWith(prefix)) return;
-
-	let tex = msg.content.slice(prefix.length).trim();
-	if (tex.endsWith(prefix)) tex = tex.slice(0, -prefix.length).trimRight();
+	if (!msg.content) return;
+	
+	let tex = msg.content.match(texPattern)[1];
 	if (!tex) return;
+	tex = tex.trim();
 
 	console.log(`${logPrefix} Processing TeX:
 \t${tex}`);
