@@ -8,6 +8,10 @@ const sharp = require('sharp');
 
 MathJax.config({
 	displayErrors: false,
+	extensions: '[siunitx]/siunitx.js',
+	paths: {
+		siunitx: 'https://raw.githubusercontent.com/burnpanck/MathJax-siunitx/ad0ea1b0a89662635ad01f4e115f43669c07e488',
+	},
 });
 MathJax.start();
 
