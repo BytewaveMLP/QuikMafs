@@ -47,9 +47,9 @@ client.on('message', async msg => {
 	const logPrefix = `${msg.channel.id}:${msg.id} -`;
 	if (!msg.content) return;
 	
-	let tex = msg.content.match(texPattern)[1];
-	if (!tex) return;
-	tex = tex.trim();
+	const matches = msg.content.match(texPattern);
+	if (!matches) return;
+	const tex = matches[1].trim();
 
 	console.log(`${logPrefix} Processing TeX:
 \t${tex}`);
