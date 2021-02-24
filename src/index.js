@@ -19,7 +19,7 @@ const client = new Discord.Client();
 const prefix = config.get('discord.prefix');
 const postfix = config.has('discord.postfix') ? config.get('discord.postfix') : config.get('discord.prefix');
 
-const texPattern = new RegExp(`^${escapeStrRegexp(prefix)}((.|\n)+?)(${escapeStrRegexp(postfix)})?$`, 'm');
+const texPattern = new RegExp(`^${escapeStrRegexp(prefix)}((.|\n)+?)${escapeStrRegexp(postfix)}$`, 'm');
 
 const statuses = config.get('discord.status.list');
 const statusDuration = config.get('discord.status.duration') * 1000;
