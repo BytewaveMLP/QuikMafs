@@ -9,6 +9,7 @@ const sharp = require('sharp');
 MathJax.config({
 	displayErrors: false,
 });
+MathJax.start();
 
 const padding = 5;
 
